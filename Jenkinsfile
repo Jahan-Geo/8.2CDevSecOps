@@ -36,9 +36,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
                     bat '''
-                    curl -L -o sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-windows-x64.zip
-                    tar -xf sonarscanner.zip
-                    sonar-scanner-5.0.1.3006-windows-x64\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN%
+                        set PATH=C:\\Program Files\\Jenkins\\jre\\bin;%PATH%
+                        C:\\sonar-scanner-8.1.0.6389-windows-x64\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN%
                     '''
                 }
             }
