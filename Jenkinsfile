@@ -32,15 +32,17 @@ pipeline {
             }
         }
 
+        /* ⭐ THIS IS THE CORRECT SONARCLOUD STAGE */
         stage('SonarCloud Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
                     bat '''
-                        set PATH=C:\\Program Files\\Jenkins\\jre\\bin;%PATH%
-                        C:\\sonar-scanner\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN%
+                        "C:\\sonar-scanner\\bin\\sonar-scanner.bat" -Dsonar.login=%SONAR_TOKEN%
                     '''
                 }
             }
         }
+        /* ⭐ END OF SONARCLOUD STAGE */
+
     }
 }
