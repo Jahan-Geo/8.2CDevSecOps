@@ -37,7 +37,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
                     bat '''
                         set PATH=C:\\Program Files\\Jenkins\\jre\\bin;%PATH%
-                        C:\\sonar-scanner-8.1.0.6389-windows-x64\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN%
+                        C:\\sonar-scanner\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN%
                     '''
                 }
             }
