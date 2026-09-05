@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Jahan-Geo/8.2CDevSecOps.git'
@@ -32,7 +33,7 @@ pipeline {
             }
         }
 
-        /* ⭐ THIS IS THE CORRECT SONARCLOUD STAGE */
+        /* ⭐ THIS MUST BE INSIDE THE STAGES BLOCK */
         stage('SonarCloud Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
